@@ -270,7 +270,6 @@
     "variables": {
         "vmNamePrefix": "[toUpper(concat(parameters('vmName'), parameters('trainerInitials')))]",
         "deployWindowsVM": "[if(equals(parameters('imageCreation'), 'No'), 'Windows', json('null'))]",
-        "deployWinVM": "[and(equals(parameters('osPlatform'), 'Windows'), parameters('imageCreation'), 'No')]",
         "_artifactsLocation": "https://raw.githubusercontent.com/balticapprenticeships/azuretemplates",
         "_templateRepo": "/main/templates"
     },
