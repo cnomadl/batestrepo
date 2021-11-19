@@ -62,11 +62,11 @@
     },
     "variables": {
         "vmNamePrefix": "[toUpper(concat(parameters('vmName'), parameters('trainerInitials')))]",
-        "galleryImageName": "SharedImageGallery",
+        "galleryImageName": "TrainingACG",
         "windowsLicense": "Windows_Server",
         "operatingSystemValues": {
             "WindowsServer": {
-                "galleryImageDefinitionName": "BA-WinSvr2016Gen2"
+                "galleryImageDefinitionName": "BA-WinSvr2016G2"
             }
         },
         "_artifactsLocation": "https://raw.githubusercontent.com/balticapprenticeships/azuretemplates",
@@ -188,6 +188,10 @@
                     "value": "[resourceId('Microsoft.Compute/virtualMachines', concat(variables('vmNamePrefix'), copyIndex(1)))]"
                 }
             }            
+        },
+        "galleryImage": {
+            "type": "object",
+            "value": "[resourceId('Microsoft.Compute/galleries/images/versions', variables('galleryImageName'), variables('operatingSystemValues')[parameters('operatingSystem')].galleryImageDefinitionName, parameters('imageVersion'))]"
         }
     }
 }
