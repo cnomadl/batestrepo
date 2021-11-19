@@ -115,8 +115,9 @@
         },
         "imageBaseOS": {
             "type": "string",
-            "defaultValue": "WindowsServer",                                       
+            "defaultValue": "NoValue",                                       
             "allowedValues": [
+                "NoValue",
                 "WindowsClient",
                 "WindowsServer"
             ],
@@ -126,8 +127,9 @@
         },
         "operatingSystem": {
             "type": "string",
-            "defaultValue": "WindowsServer",
+            "defaultValue": "NoValue",
             "allowedValues": [
+                "NoValue",
                 "WindowsClient",
                 "WindowsServer",
                 "WindowsTesting",
@@ -142,8 +144,9 @@
         },
         "linuxOS": {
             "type": "string",
-            "defaultValue": "UbuntuServer",
+            "defaultValue": "NoValue",
             "allowedValues": [
+                "NoValue",
                 "UbuntuServer",
                 "Debian",
                 "RedHat"
