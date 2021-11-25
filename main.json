@@ -525,7 +525,7 @@
                         "value": "[parameters('osDiskType')]"
                     },
                     "operatingSystem": {
-                        "value": "[parameters('operatingSystem')]"
+                        "value": "[variables('osImage')]"
                     },
                     "licenseType": {
                         "value": "[parameters('licenseType')]"
