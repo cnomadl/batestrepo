@@ -57,7 +57,7 @@
             "type": "string"
         },
         "localUserPassword": {
-            "type": "securestring"
+            "type": "string"
         }
     },
     "variables": {
