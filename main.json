@@ -131,12 +131,13 @@
             "allowedValues": [
                 "NoValue",
                 "WindowsClient",
-                "WindowsServer",
+                "WindowsServer-NA",
+                "WindowsServer-SP",
+                "WindowsServer-CITE",
                 "WindowsTesting",
                 "DiplomaVm",
                 "RawDigital",
-                "DataBootCamp",
-                "SecurityPlus"
+                "DataBootCamp"
             ],
             "metadata": {
                 "description": "Choose your operating system."
@@ -272,6 +273,7 @@
     },
     "variables": {
         "vmNamePrefix": "[toUpper(concat(parameters('vmName'), parameters('trainerInitials')))]",
+        "osImage": "[if(contains(parameters('operatingSystem'), 'WindowsServer'), 'WindowsServer', parameters('operatingSystem'))]",
         "deployWindowsVM": "[if(equals(parameters('imageCreation'), 'No'), 'Windows', json('null'))]",
         "_artifactsLocation": "https://raw.githubusercontent.com/balticapprenticeships/azuretemplates",
         "_templateRepo": "/main/templates"
@@ -488,7 +490,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[concat(variables('_artifactsLocation'), variables('_templateRepo'), '/', parameters('operatingSystem'), '.json')]",
+                    "uri": "[concat(variables('_artifactsLocation'), variables('_templateRepo'), '/', variables('osImage'), '.json')]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
