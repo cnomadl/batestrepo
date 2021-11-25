@@ -201,12 +201,20 @@
                                     "value": "WindowsClient"
                                 },
                                 {
-                                    "label": "Windows Server 2016",
-                                    "value": "WindowsServer"
+                                    "label": "Networking and Architecture",
+                                    "value": "WindowsServer-NA"
                                 },
                                 {
                                     "label": "Security+",
-                                    "value": "SecurityPlus"
+                                    "value": "WindowsServer-SP"
+                                },
+                                {
+                                    "label": "Security+",
+                                    "value": "WindowsServer-SP"
+                                },
+                                {
+                                    "label": "Cisco ITE",
+                                    "value": "WindowsServer-CITE"
                                 },
                                 {
                                     "label": "L2 Diploma",
