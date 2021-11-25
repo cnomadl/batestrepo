@@ -256,13 +256,6 @@
                 "description": "None admin username"
             }
         },
-        "localUserPassword": {
-            "type": "securestring",
-            "defaultValue": "",
-            "metadata": {
-                "description": "None admin user password. If Linux SSH is recommended."
-            }
-        },
         "subnetName": {
             "type": "string",
             "defaultValue": "default",
@@ -275,6 +268,8 @@
         "vmNamePrefix": "[toUpper(concat(parameters('vmName'), parameters('trainerInitials')))]",
         "osImage": "[if(contains(parameters('operatingSystem'), 'WindowsServer'), 'WindowsServer', parameters('operatingSystem'))]",
         "deployWindowsVM": "[if(equals(parameters('imageCreation'), 'No'), 'Windows', json('null'))]",
+        "vaultResourceGroup": "BalticTrainerOMS",
+        "vaultName": "DeploymentVM", 
         "_artifactsLocation": "https://raw.githubusercontent.com/balticapprenticeships/azuretemplates",
         "_templateRepo": "/main/templates"
     },
@@ -549,7 +544,12 @@
                         "value": "[parameters('localUsername')]"
                     },
                     "localUserPassword": {
-                        "value": "[parameters('localUserPassword')]"
+                        "reference": {
+                            "keyVault": {
+                                "id": "[resourceId(subscription().subscriptionId, variables('vaultResourceGroup'), 'Microsoft.KeyVault/vaults', variables('vaultName'))]"
+                            },
+                            "secretName": "[parameters('localUsername')]"
+                        }
                     }
                 }
             },
