@@ -542,14 +542,6 @@
                     },
                     "localUsername": {
                         "value": "[parameters('localUsername')]"
-                    },
-                    "localUserPassword": {
-                        "reference": {
-                            "keyVault": {
-                                "id": "[resourceId(subscription().subscriptionId, variables('vaultResourceGroup'), 'Microsoft.KeyVault/vaults', variables('vaultName'))]"
-                            },
-                            "secretName": "[parameters('localUsername')]"
-                        }
                     }
                 }
             },

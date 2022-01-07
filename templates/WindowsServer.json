@@ -55,9 +55,6 @@
         },
         "localUsername": {
             "type": "string"
-        },
-        "localUserPassword": {
-            "type": "securestring"
         }
     },
     "variables": {
@@ -69,10 +66,21 @@
                 "galleryImageDefinitionName": "BA-WinServer2016"
             }
         },
+        "vaultResourceGroup": "BalticTrainerOMS",
+        "vaultName": "DeploymentVM",
+        "localUserPassword": {
+            "reference": {
+                "keyVault": {
+                    "id": "[resourceId(subscription().subscriptionId, variables('vaultResourceGroup'), 'Microsoft.KeyVault/vaults', variables('vaultName'))]"
+                },
+                "secretName": "[parameters('localUsername')]"
+            }
+        }, 
         "_artifactsLocation": "https://raw.githubusercontent.com/balticapprenticeships/azuretemplates",
         "_extensionRepo": "main/extensions",
         "dscArchiveFolder": "DSC",
         "dscArchiveFileName": "xBaLabWindowsCfg.zip"
+        
     },
     "resources": [
         {
@@ -170,7 +178,7 @@
                             "configurationArguments": {
                                 "Credential": {
                                     "UserName": "[parameters('localUsername')]",
-                                    "Password": "[parameters('localUserPassword')]"
+                                    "Password": "[variables('localUserPassword')]"
                                 }
                             }
                         }
